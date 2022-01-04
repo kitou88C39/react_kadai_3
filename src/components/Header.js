@@ -23,7 +23,7 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             React課題③
           </Typography>
-
+          <div style={{ flexGrow: 1 }}></div>
           <Button variant="text" color="inherit">
             Login
           </Button>
