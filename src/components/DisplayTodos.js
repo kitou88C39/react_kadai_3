@@ -1,5 +1,5 @@
 //addTodos　受取人
-//未完了の受取人 comment
+//comment 未完了の受取人
 //count 送金者の残高
 //num　送金者の入金及び出勤額
 //balance 受取人の残高
@@ -10,7 +10,7 @@ import {
   addTodos,
   // completeTodos,
   removeTodos,
-  updateTodos,
+  // updateTodos,
 } from "../redux/reducer";
 import TodoItem from "./TodoItem";
 
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addTodo: (obj) => dispatch(addTodos(obj)),
     removeTodo: (id) => dispatch(removeTodos(id)),
-    updateTodo: (obj) => dispatch(updateTodos(obj)),
+    //updateTodo: (obj) => dispatch(updateTodos(obj)),
     //completeTodo: (id) => dispatch(completeTodos(id)),
   };
 };
@@ -38,7 +38,7 @@ const DisplayTodos = (props) => {
         <button onClick={() => setSort("completed")}>Completed</button>
         <button onClick={() => setSort("all")}>All</button>
       </div> */}
-      <ol>
+      <ol style={{ display: "inline-block" }}>
         {props.todos.length > 0 && sort === "active"
           ? props.todos.map((item) => {
               return (
@@ -47,8 +47,8 @@ const DisplayTodos = (props) => {
                     key={item.id}
                     item={item}
                     removeTodo={props.removeTodo}
-                    updataTodo={props.updataTodo}
-                    completeTodo={props.completeTodo}
+                    //updataTodo={props.updataTodo}
+                    //completeTodo={props.completeTodo}
                   />
                 )
               );
@@ -62,8 +62,8 @@ const DisplayTodos = (props) => {
                     key={item.id}
                     item={item}
                     removeTodo={props.removeTodo}
-                    updataTodo={props.updataTodo}
-                    completeTodo={props.completeTodo}
+                    //updataTodo={props.updataTodo}
+                    //completeTodo={props.completeTodo}
                   />
                 )
               );
@@ -76,8 +76,8 @@ const DisplayTodos = (props) => {
                   key={item.id}
                   item={item}
                   removeTodo={props.removeTodo}
-                  updataTodo={props.updataTodo}
-                  completeTodo={props.completeTodo}
+                  //updataTodo={props.updataTodo}
+                  //completeTodo={props.completeTodo}
                 />
               );
             })
