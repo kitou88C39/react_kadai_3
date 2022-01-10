@@ -1,9 +1,12 @@
+import React from "react";
 import DisplayTodos from "./components/DisplayTodos";
 import Header from "./components/Header";
 import Todos from "./components/Todos";
 import { motion } from "framer-motion";
+import { auth } from "./firebase";
 
-function App() {
+const App = () => {
+  console.log(auth);
   return (
     <div className="App">
       <Header />
@@ -27,6 +30,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

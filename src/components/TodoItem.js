@@ -3,7 +3,8 @@
 //num　送金者の入金及び出勤額
 //balance 受取人の残高
 
-import React, { useState, useRef } from "react";
+//import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import {
   Box,
@@ -14,7 +15,7 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle,
+  //DialogTitle,
   Typography,
 } from "@material-ui/core";
 
@@ -43,7 +44,10 @@ const AddTodoWalletDialog = ({ isOpen, addTodo, handleClose }) => {
     >
       <Box sx={style}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          {addTodo.addTodos}
+          受取人:{addTodo.addTodos}
+          {/* 受取人:{addTodo.item} */}
+          {/* 受取人:{item.item} */}
+          {/* 受取人 : <p>{item.item}</p> */}
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           残高 : {addTodo.balance} 円
@@ -69,7 +73,7 @@ const AddTodoTransferDialog = ({
   if (!addTodo) return null;
   return (
     <Dialog open={open} onClose={handleClickClose}>
-      <DialogTitle>{addTodo.addTodos}</DialogTitle>
+      {/* <DialogTitle>{}</DialogTitle> */}
       <DialogContent>
         <DialogContentText>あなたの残高: {count} 円</DialogContentText>
         <Box
@@ -112,31 +116,34 @@ const AddTodoTransferDialog = ({
 };
 
 const TodoItem = (props) => {
-  const { item, updateTodo, removeTodo } = props;
+  //const { item, updateTodo, removeTodo } = props;
+  const { item, removeTodo } = props;
 
   const [count, setCount] = useState(0);
   const [balance, setBalance] = useState(0);
   const [num, setNum] = useState(100);
+
+  //const [items, setItems] = useState([]);
   //const [addTodos, setAddTodos] = useState([]);
   //const [comment, setComment] = useState("");
   const [open, setOpen] = React.useState(false);
   const [IsOpen, setIsOpen] = React.useState(false);
   const [targetTodo, setTargetTodo] = React.useState(null);
 
-  const inputRef = useRef(true);
+  //const inputRef = useRef(true);
 
-  const changeFocus = () => {
-    inputRef.current.disabled = false;
-    inputRef.current.focus();
-    setIsOpen(true);
-    setTargetTodo(item);
-  };
-  const update = (id, value, e) => {
-    if (e.which === 13) {
-      updateTodo({ id, item: value });
-      inputRef.current.disabled = true;
-    }
-  };
+  // const changeFocus = () => {
+  //   inputRef.current.disabled = false;
+  //   inputRef.current.focus();
+  //   setIsOpen(true);
+  //   setTargetTodo(item);
+  // };
+  // const update = (id, value, e) => {
+  //   if (e.which === 13) {
+  //     updateTodo({ id, item: value });
+  //     inputRef.current.disabled = true;
+  //   }
+  // };
 
   const onCountDown = () => {
     setCount(count - num);
@@ -153,9 +160,14 @@ const TodoItem = (props) => {
   //   setAddTodos(newTodos.map((e, i) => ({ ...e, id: i + 1 })));
   // };
 
-  const handleClickOpen = (todo) => {
-    setTargetTodo(todo);
+  const handleClickOpen = (addTodo) => {
+    setTargetTodo(addTodo);
     setOpen(true);
+  };
+
+  const handleClickOpen2 = (addTodo) => {
+    setTargetTodo(addTodo);
+    setIsOpen(true);
   };
 
   const handleClickClose = () => {
@@ -174,18 +186,20 @@ const TodoItem = (props) => {
   return (
     <div className="balance-list">
       <li key={item.id} className="card">
-        <textarea
+        <p>{item.item}</p>
+        {/* <textarea
           ref={inputRef}
           disabled={inputRef}
           defaultValue={item.item}
           onKeyPress={(e) => update(item.id, inputRef.current.value, e)}
-        />
+        /> */}
         <div className="btns">
           <Button
             className="wallet"
             variant="outlined"
             color="primary"
-            onClick={() => changeFocus()}
+            onClick={() => handleClickOpen2(item.id)}
+            //onClick={() => changeFocus()}
           >
             walletを見る
           </Button>
@@ -206,9 +220,11 @@ const TodoItem = (props) => {
           </Button>
           {""}
         </div>
-        {item.completed && <span className="completed">done</span>}
+        {/* {item.completed && <span className="completed">done</span>} */}
       </li>
       <AddTodoWalletDialog
+        item={item}
+        balance={balance}
         isOpen={IsOpen}
         addTodo={targetTodo}
         handleClose={handleClose}
@@ -218,6 +234,8 @@ const TodoItem = (props) => {
         addTodo={targetTodo}
         num={num}
         setNum={setNum}
+        count={count}
+        balance={balance}
         handleClickClose={handleClickClose}
         handleClickTransferButton={handleClickTransferButton}
       />
