@@ -3,7 +3,6 @@
 //count 送金者の残高
 //num　送金者の入金及び出勤額
 //balance 受取人の残高
-
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
