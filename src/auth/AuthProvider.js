@@ -1,17 +1,5 @@
 import React, { useEffect, useState } from "react";
-//import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
-//import { getAuth } from "firebase";
-
-// import {
-//   createUserWithEmailAndPassword,
-//   signInWithEmailAndPassword,
-//   onAuthStateChanged,
-// } from "firebase/auth";
-// import { firebaseAuth } from "../firebase";
-// import { db } from "./firebase";
-// import firebase from "./firebase";
-// import firebase from "../../firebase";
 
 const AuthContext = React.createContext();
 
@@ -19,9 +7,9 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   //サインアップ後認証情報を更新
-  const signup = async (email, password, history) => {
+  const signup = async (name, email, password, history) => {
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      await auth.createUserWithEmailAndPassword(name, email, password);
       auth.onAuthStateChanged((user) => setCurrentUser(user));
       history.push("/");
     } catch (error) {

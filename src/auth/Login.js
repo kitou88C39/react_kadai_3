@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
+
+//import { withRouter } from "react-router";
+
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import { Button, styled } from "@material-ui/core";
+import { Box, Button, styled, TextField } from "@material-ui/core";
 
 const SignInButton = styled(Button)({
   background: "#6fc4f9",
-  fontSize: "1.8rem",
+  fontSize: "1.0rem",
   border: 0,
   borderRadius: 3,
   color: "white",
@@ -29,24 +32,63 @@ const Login = ({ history }) => {
   return (
     <div className="wrapper">
       <div className="auth-container">
-        <h1>Log In</h1>
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <div className="auth-form-item">
-            <label>E-mail Address</label>
-            <input name="email" type="email" placeholder="email@gmail.com" />
-          </div>
-          <div className="auth-form-item">
-            <label>Password</label>
-            <input name="password" type="password" placeholder="Password" />
-          </div>
-          <SignInButton type="submit">LOG IN</SignInButton>
-        </form>
-        <Link to="/signup" className="auth-bottom">
-          SignUpはこちら
-        </Link>
+        <div style={{ textAlign: "center" }}>
+          <h1>LogIn</h1>
+
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="auth-form-item">
+              <Box
+                component="form"
+                sx={{
+                  "& > :not(style)": { m: 1, width: "25ch" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  variant="outlined"
+                />
+              </Box>
+            </div>
+            <div className="auth-form-item">
+              <Box
+                component="form"
+                sx={{
+                  "& > :not(style)": { m: 1, width: "25ch" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  variant="outlined"
+                />
+              </Box>
+            </div>
+            <SignInButton type="submit">LOGINする</SignInButton>
+          </form>
+          <Link to="/signup" className="auth-bottom">
+            アカウントをお持ちでない方はこちら
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default withRouter(Login);

@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const DisplayTodos = (props) => {
+  const { count, setCount } = props;
   const [sort, setSort] = useState("active");
   return (
     <div className="displaytodos">
@@ -47,6 +48,8 @@ const DisplayTodos = (props) => {
                     key={item.id}
                     item={item}
                     removeTodo={props.removeTodo}
+                    count={count}
+                    setCount={setCount}
                     //updataTodo={props.updataTodo}
                     //completeTodo={props.completeTodo}
                   />
@@ -62,6 +65,8 @@ const DisplayTodos = (props) => {
                     key={item.id}
                     item={item}
                     removeTodo={props.removeTodo}
+                    count={count}
+                    setCount={setCount}
                     //updataTodo={props.updataTodo}
                     //completeTodo={props.completeTodo}
                   />
@@ -76,6 +81,8 @@ const DisplayTodos = (props) => {
                   key={item.id}
                   item={item}
                   removeTodo={props.removeTodo}
+                  count={count}
+                  setCount={setCount}
                   //updataTodo={props.updataTodo}
                   //completeTodo={props.completeTodo}
                 />
