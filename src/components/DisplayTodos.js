@@ -28,7 +28,6 @@ const mapDispatchToProps = (dispatch) => {
     //completeTodo: (id) => dispatch(completeTodos(id)),
   };
 };
-
 const DisplayTodos = (props) => {
   const { count, setCount } = props;
   const [sort, setSort] = useState("active");

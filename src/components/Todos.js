@@ -23,12 +23,13 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Todos = (props) => {
+  const { count, setCount } = props;
   const [todo, setTodo] = useState("");
 
   const handleChange = (e) => {
     setTodo(e.target.value);
   };
-  const [count, setCount] = useState(0);
+  //const [count, setCount] = useState(0);
   const [num, setNum] = useState(100);
   const onCountUp = () => {
     setCount(count + num);
