@@ -111,7 +111,8 @@ const AddTodoTransferDialog = ({
 };
 
 const TodoItem = (props) => {
-  const { item, updateTodo, removeTodo, count, setCount } = props;
+  //const { item, updateTodo, removeTodo, count, setCount } = props;
+  const { item, removeTodo, count, setCount } = props;
   const [balance, setBalance] = useState(0);
   const [num, setNum] = useState(100);
   //const [addTodos, setAddTodos] = useState([]);
@@ -128,12 +129,12 @@ const TodoItem = (props) => {
     setIsOpen(true);
     setTargetTodo(item);
   };
-  const update = (id, value, e) => {
-    if (e.which === 13) {
-      updateTodo({ id, item: value });
-      inputRef.current.disabled = true;
-    }
-  };
+  // const update = (id, value, e) => {
+  //   if (e.which === 13) {
+  //     updateTodo({ id, item: value });
+  //     inputRef.current.disabled = true;
+  //   }
+  // };
 
   const onCountDown = () => {
     setCount(count - num);
