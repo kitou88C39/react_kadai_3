@@ -19,7 +19,6 @@ const AuthProvider = ({ children }) => {
       alert(error);
     }
   };
-
   //ログインさせる
   const login = async (email, password, history) => {
     //const login = async (email, password, navigate) => {
