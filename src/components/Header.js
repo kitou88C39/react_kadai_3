@@ -11,7 +11,6 @@ import {
 //import { auth } from "../firebase";
 // import { useHistory } from "react-router-dom";
 // import { AuthContext } from "../auth/AuthProvider";
-
 const Header = () => {
   //   const { currentUser } = useContext(AuthContext);
   //   const history = useHistory();
