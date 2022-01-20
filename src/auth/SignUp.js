@@ -47,10 +47,10 @@ const SignUp = ({ history }) => {
                   margin="normal"
                   required
                   fullWidth
-                  id="user name"
-                  label="User Name"
-                  name="user name"
-                  autoComplete="user name"
+                  id="Display name"
+                  label="Display name"
+                  name="display name"
+                  autoComplete="display name"
                   autoFocus
                   variant="outlined"
                 />
